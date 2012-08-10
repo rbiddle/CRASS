@@ -11,8 +11,16 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    objects/cocinvestigator.cpp \
+    objects/investigator.cpp \
+    objects/coc1920investigator.cpp \
+    objects/cocgaslightinvestigator.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    objects/cocinvestigator.h \
+    objects/investigator.h \
+    objects/coc1920investigator.h \
+    objects/cocgaslightinvestigator.h
 
 FORMS    += mainwindow.ui
