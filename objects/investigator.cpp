@@ -62,7 +62,6 @@ int Investigator::rollDice(int numDice, int numSides)
             results = results + intToString(roll);
         else
             results = results + intToString(roll) + " + ";
-        std::cout << "Roll #" << x << ": " << roll << " :: " << results << std::endl;
     }
     this->setDieRoll(results);
     return output;
