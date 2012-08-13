@@ -8,8 +8,12 @@
 int main(int argc, char *argv[])
 {
     CoC1920Investigator test = CoC1920Investigator();
-    std::cout << "Test: " << test.rollDice(2,10) << " ( ";
-    std::cout << test.getDieRoll() << " )" << std::endl;
+    test.setCharName("James McGregor");
+    test.setPlayerName("Rob B.");
+    test.setCharDesc("A shifty man...");
+    test.setStats();
+    test.setIncome();
+    test.OutputInvestigator();
 
     QApplication a(argc, argv);
     MainWindow w;

@@ -2,14 +2,12 @@
 #define INVESTIGATOR_H
 
 #include "string"
+#include "objects/diceroller.h"
 
 class Investigator
 {
 public:
     Investigator();
-    std::string getDieRoll();
-    int rollDice ( int numDice, int numSides );
-    std::string getRollResult();
 
     std::string getCharName();
     void setCharName( std::string inName );
@@ -18,15 +16,13 @@ public:
     std::string getCharDesc();
     void setCharDesc( std::string inDesc );
 
-private:
-    std::string dieRoll;
-    void setDieRoll( std::string dieString );
-    int rollDie( int numSides );
-    std::string intToString(int inInt);
+    void saveCharacter( std::string format, std::string location );
 
+protected:
     std::string data_charname;
     std::string data_playername;
     std::string data_desc;
+    DiceRoller dice;
 
 };
 

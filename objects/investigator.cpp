@@ -1,22 +1,12 @@
 #include "investigator.h"
-#include "stdlib.h"
 #include "iostream"
 #include "sstream"
-#include "ctime"
+
+#include "objects/diceroller.h"
 
 Investigator::Investigator()
 {
-    srand(time(NULL));
-}
-
-void Investigator::setDieRoll( std::string dieString )
-{
-    this->dieRoll = dieString;
-}
-
-std::string Investigator::getDieRoll()
-{
-    return this->dieRoll;
+    dice = DiceRoller();
 }
 
 std::string Investigator::getCharName()
@@ -49,8 +39,9 @@ void Investigator::setCharDesc( std::string inDesc )
     this->data_desc = inDesc;
 }
 
-int Investigator::rollDice(int numDice, int numSides)
+void Investigator::saveCharacter(std::string format, std::string location)
 {
+<<<<<<< HEAD
     int output = 0;
     int roll = 0;
     std::string results = "Roll: ";
@@ -86,4 +77,7 @@ std::string Investigator::intToString(int inInt)
     output = stream.str();
 
     return output;
+=======
+    //TODO: Save Investigator file in <<format>> at <<location>>
+>>>>>>> Updt for Core/1920 CoC Chargen & Dice Breakout
 }
