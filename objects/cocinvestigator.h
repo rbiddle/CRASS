@@ -2,6 +2,7 @@
 #define COCINVESTIGATOR_H
 
 #include "string"
+#include "vector"
 #include "investigator.h"
 
 class CoCInvestigator : public Investigator
@@ -53,6 +54,11 @@ public:
     double getCash();
     double getSavings();
 
+    int getSkill(std::string sSearch);
+    void setSkillBase(std::string sSearch, int iVal);
+    void incrSkillOcpn(std::string sSearch, int iVal);
+    void incrSkillPrsn(std::string sSearch, int iVal);
+
 protected:
     std::string data_occupation;
     std::string data_education;
@@ -92,9 +98,23 @@ protected:
     int stat_hp;
     int stat_currsan;
     int stat_currmp;
-    int stat_currhp;
+    int stat_currhp;  // current hit points
+
+    int pts_ocpn;  // occupational points
+    int pts_prsn;  // personal interest points
 
     std::string calcDmgBonus();
+
+    struct skillStruct
+    {
+        std::string name;
+        std::string desc;
+        int baseVal;
+        int incrOcpn;
+        int incrPrsn;
+    };
+    std::vector<skillStruct> skills;
+    skillStruct makeSkill(std::string sName, std::string sDesc, int baseVal);
 };
 
 #endif // COCINVESTIGATOR_H

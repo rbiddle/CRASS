@@ -128,6 +128,8 @@ int CoCInvestigator::getSIZ() {
 
 void CoCInvestigator::setDEX( int iVal ) {
     this->stat_dex = iVal;
+    if ( this->getSkill("dodge") < (iVal * 2) )
+        this->setSkillBase("dodge", iVal * 2);
 }
 
 int CoCInvestigator::getDEX() {
@@ -145,6 +147,8 @@ int CoCInvestigator::getAPP() {
 void CoCInvestigator::setINT( int iVal ) {
     this->stat_int = iVal;
     this->setIDEA( (this->getINT() * 5) );
+
+    //TODO: Update Occupation Points
 }
 
 int CoCInvestigator::getINT() {
@@ -171,6 +175,10 @@ int CoCInvestigator::getPOW() {
 void CoCInvestigator::setEDU( int iVal ) {
     this->stat_edu = iVal;
     this->setKNOW( (this->getEDU() * 5) );
+    if ( this->getSkill("ownlanguage") < (iVal * 5) )
+        this->setSkillBase("ownlanguage", iVal * 5);
+
+    //TODO: Update Occupation Points
 }
 
 int CoCInvestigator::getEDU() {
@@ -262,8 +270,6 @@ std::string CoCInvestigator::calcDmgBonus()
     int totStrSiz = this->getSTR() + this->getSIZ();
     std::string output = "";
 
-    totStrSiz = 120;
-
     if(totStrSiz <= 12){
         output = "-1d6";
     } else if(totStrSiz >= 13 && totStrSiz <= 16){
@@ -304,4 +310,50 @@ double CoCInvestigator::getCash()
 double CoCInvestigator::getSavings()
 {
     return this->data_savings;
+}
+
+int CoCInvestigator::getSkill(std::string sSearch)
+{
+    for ( unsigned int i=0; i < this->skills.size(); i++ )
+        if( (this->skills[i].name == sSearch) || (this->skills[i].desc == sSearch) )
+            return ( this->skills[i].baseVal + this->skills[i].incrOcpn + this->skills[i].incrPrsn );
+    return 0;
+}
+
+void CoCInvestigator::setSkillBase(std::string sSearch, int iVal)
+{
+    for ( unsigned int i=0; i < this->skills.size(); i++ )
+        if( (this->skills[i].name == sSearch) || (this->skills[i].desc == sSearch) ) {
+            this->skills[i].baseVal = iVal;
+            break;
+        }
+}
+
+void CoCInvestigator::incrSkillOcpn(std::string sSearch, int iVal)
+{
+    for ( unsigned int i=0; i < this->skills.size(); i++ )
+        if( (this->skills[i].name == sSearch) || (this->skills[i].desc == sSearch) ) {
+            this->skills[i].incrOcpn = iVal;
+            break;
+        }
+}
+
+void CoCInvestigator::incrSkillPrsn(std::string sSearch, int iVal)
+{
+    for ( unsigned int i=0; i < this->skills.size(); i++ )
+        if( (this->skills[i].name == sSearch) || (this->skills[i].desc == sSearch) ) {
+            this->skills[i].incrPrsn = iVal;
+            break;
+        }
+}
+
+CoCInvestigator::skillStruct CoCInvestigator::makeSkill(std::string sName, std::string sDesc, int baseVal)
+{
+    skillStruct output;
+    output.name = sName;
+    output.desc = sDesc;
+    output.baseVal = baseVal;
+    output.incrOcpn = 0;
+    output.incrPrsn = 0;
+    return output;
 }
