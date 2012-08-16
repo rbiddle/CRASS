@@ -58,6 +58,12 @@ public:
     void setSkillBase(std::string sSearch, int iVal);
     void incrSkillOcpn(std::string sSearch, int iVal);
     void incrSkillPrsn(std::string sSearch, int iVal);
+    int getTotalOcpnPts();
+    int getRemainingOcpnPts();
+    int getTotalPrsnPts();
+    int getRemainingPrsnPts();
+    void setOcpnPts( int iVal );
+    void setPrsnPts( int iVal );
 
 protected:
     std::string data_occupation;
@@ -100,8 +106,8 @@ protected:
     int stat_currmp;
     int stat_currhp;  // current hit points
 
-    int pts_ocpn;  // occupational points
-    int pts_prsn;  // personal interest points
+    int ocpnPts;  // occupational points
+    int prsnPts;  // personal interest points
 
     std::string calcDmgBonus();
 

@@ -8,8 +8,7 @@
 int main(int argc, char *argv[])
 {
     CoC1920Investigator test = CoC1920Investigator();
-    test.create1920Investigator();
-    test.setCharDesc("A shifty man...");
+    test.create1920Investigator("Chester the Character", "Rob the Player", "A shifty man...");
 
     test.incrSkillOcpn("headbutt", 10);
     test.incrSkillPrsn("Head Butt", 15);

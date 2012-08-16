@@ -10,8 +10,6 @@ CoC1920Investigator::CoC1920Investigator()
 
 void CoC1920Investigator::OutputInvestigator()
 {
-//    std::vector<skillStruct>::iterator skill;
-
     std::cout << "Outputting Investigator:" << std::endl;
     std::cout << "Character Name: " << this->getCharName() << std::endl;
     std::cout << "Player Name: " << this->getPlayerName() << std::endl;
@@ -41,6 +39,9 @@ void CoC1920Investigator::OutputInvestigator()
         std::cout << this->skills[i].desc << " ( " << this->skills[i].baseVal << " + "
                                           << this->skills[i].incrOcpn << " Occupation + "
                                           << this->skills[i].incrPrsn << " Personal Interest )" <<std::endl;
+    std::cout << "Skill Points:" << std::endl;
+    std::cout << "Occupational: " << this->getRemainingOcpnPts() << " remain out of " << this->getTotalOcpnPts() << " total points" << std::endl;
+    std::cout << "Personal Interest: " << this->getRemainingPrsnPts() << " remain out of " << this->getTotalPrsnPts() << " total points" << std::endl;
 
 }
 
@@ -153,6 +154,16 @@ void CoC1920Investigator::setDefaultSkills()
     this->skills.push_back( this->makeSkill("swim","Swim",25) );
     this->skills.push_back( this->makeSkill("throw","Throw",25) );
     this->skills.push_back( this->makeSkill("track","Track",10) );
+    this->skills.push_back( this->makeSkill("custom1","Custom Skill #1",0) );
+    this->skills.push_back( this->makeSkill("custom2","Custom Skill #2",0) );
+    this->skills.push_back( this->makeSkill("custom3","Custom Skill #3",0) );
+    this->skills.push_back( this->makeSkill("custom4","Custom Skill #4",0) );
+    this->skills.push_back( this->makeSkill("custom5","Custom Skill #5",0) );
+    this->skills.push_back( this->makeSkill("custom6","Custom Skill #6",0) );
+    this->skills.push_back( this->makeSkill("custom7","Custom Skill #7",0) );
+    this->skills.push_back( this->makeSkill("custom8","Custom Skill #8",0) );
+    this->skills.push_back( this->makeSkill("custom9","Custom Skill #9",0) );
+    this->skills.push_back( this->makeSkill("custom10","Custom Skill #10",0) );
     this->skills.push_back( this->makeSkill("handgun","Handgun",20) );
     this->skills.push_back( this->makeSkill("machinegun","Machine Gun",15) );
     this->skills.push_back( this->makeSkill("rifle","Rifle",25) );
@@ -178,7 +189,42 @@ void CoC1920Investigator::create1920Investigator()
                                  ,dice.rollDice(3,6)
                                  ,dice.rollDice(3,6)+3
                                  ,0
-                                );
+                                  );
+}
+
+void CoC1920Investigator::create1920Investigator(std::string sCharName, std::string sPlayerName)
+{
+    //Create character with randomly generated stats:
+    this->create1920Investigator( sCharName
+                                 ,sPlayerName
+                                 ,dice.rollDice(3,6)
+                                 ,dice.rollDice(3,6)
+                                 ,dice.rollDice(2,6)+6
+                                 ,dice.rollDice(3,6)
+                                 ,dice.rollDice(3,6)
+                                 ,dice.rollDice(2,6)+6
+                                 ,dice.rollDice(3,6)
+                                 ,dice.rollDice(3,6)+3
+                                 ,0
+                                  );
+}
+
+void CoC1920Investigator::create1920Investigator(std::string sCharName, std::string sPlayerName, std::string sDesc)
+{
+    //Create character with randomly generated stats:
+    this->create1920Investigator( sCharName
+                                 ,sPlayerName
+                                 ,dice.rollDice(3,6)
+                                 ,dice.rollDice(3,6)
+                                 ,dice.rollDice(2,6)+6
+                                 ,dice.rollDice(3,6)
+                                 ,dice.rollDice(3,6)
+                                 ,dice.rollDice(2,6)+6
+                                 ,dice.rollDice(3,6)
+                                 ,dice.rollDice(3,6)+3
+                                 ,0
+                                  );
+    this->setCharDesc(sDesc);
 }
 
 void CoC1920Investigator::create1920Investigator(std::string sCharName, std::string sPlayerName, int iSTR, int iCON, int iSIZ, int iDEX, int iAPP, int iINT, int iPOW, int iEDU, int iIncome)
@@ -191,4 +237,14 @@ void CoC1920Investigator::create1920Investigator(std::string sCharName, std::str
     else
         this->setIncome(iIncome);
     this->setDefaultSkills();
+}
+
+void CoC1920Investigator::saveInvestigator(std::string sFileName)
+{
+    // TODO: save invetigator to file
+}
+
+void CoC1920Investigator::loadInvestigator(std::string sFileName)
+{
+    // TODO: read in invetigator from file
 }

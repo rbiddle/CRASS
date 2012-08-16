@@ -99,7 +99,7 @@ void CoCInvestigator::setCON( int iVal ) {
     //Recalc HP
     int totConSiz = this->getCON() + this->getSIZ();
     this->setHP( ceil(((double)totConSiz) / 2.00) );\
-    //Reset Curr HP?
+    //Reset Curr HP
     if (this->getCurrHP() > this->getHP() )
         this->setCurrHP( this->getHP() );
 }
@@ -117,7 +117,7 @@ void CoCInvestigator::setSIZ( int iVal ) {
     //recalc HP
     int totConSiz = this->getCON() + this->getSIZ();
     this->setHP( ceil(((double)totConSiz) / 2.00) );
-    //Reset Curr HP?
+    //Reset Curr HP
     if (this->getCurrHP() > this->getHP() )
         this->setCurrHP( this->getHP() );
 }
@@ -148,7 +148,7 @@ void CoCInvestigator::setINT( int iVal ) {
     this->stat_int = iVal;
     this->setIDEA( (this->getINT() * 5) );
 
-    //TODO: Update Occupation Points
+    this->setPrsnPts(this->getINT() * 10);
 }
 
 int CoCInvestigator::getINT() {
@@ -158,11 +158,14 @@ int CoCInvestigator::getINT() {
 void CoCInvestigator::setPOW( int iVal ) {
     this->stat_pow = iVal;
     this->setLUCK( (this->getPOW() * 5) );
-    this->setSAN( (this->getPOW() * 5) );
     this->setMP( this->getPOW() );
 
-    if( this->getCurrSan() > this->getSAN() )
-        this->setCurrSan( this->getSAN() );
+    this->setSAN( (this->getPOW() * 5) );
+// Per 20th edition rule book, Current SAN does not change when POW increases, only SAN Characteristic (p. 101)
+// it's unclear if POW decreases, does Current SAN drop as well. It reads (p. 40) that POW*5 is used for the
+// SAN Charactaristic and starting SAN, but is not a limiter thereafter.
+//    if( this->getCurrSan() > this->getSAN() )
+//        this->setCurrSan( this->getSAN() );
 
     // Magic Points do not decrease if POW goes down, but will not increase until below the new max
     // TODO: if POW goes up, MP is increased pro-rated...
@@ -178,7 +181,7 @@ void CoCInvestigator::setEDU( int iVal ) {
     if ( this->getSkill("ownlanguage") < (iVal * 5) )
         this->setSkillBase("ownlanguage", iVal * 5);
 
-    //TODO: Update Occupation Points
+    this->setOcpnPts(this->getEDU() * 20);
 }
 
 int CoCInvestigator::getEDU() {
@@ -345,6 +348,42 @@ void CoCInvestigator::incrSkillPrsn(std::string sSearch, int iVal)
             this->skills[i].incrPrsn = iVal;
             break;
         }
+}
+
+int CoCInvestigator::getTotalOcpnPts()
+{
+    return this->ocpnPts;
+}
+
+int CoCInvestigator::getRemainingOcpnPts()
+{
+    int spentPts = 0;
+    for ( unsigned int i=0; i < this->skills.size(); i++ )
+        spentPts += this->skills[i].incrOcpn;
+    return ( this->getTotalOcpnPts() - spentPts );
+}
+
+int CoCInvestigator::getTotalPrsnPts()
+{
+    return this->prsnPts;
+}
+
+int CoCInvestigator::getRemainingPrsnPts()
+{
+    int spentPts = 0;
+    for ( unsigned int i=0; i < this->skills.size(); i++ )
+        spentPts += this->skills[i].incrPrsn;
+    return ( this->getTotalPrsnPts() - spentPts );
+}
+
+void CoCInvestigator::setOcpnPts(int iVal)
+{
+    this->ocpnPts = iVal;
+}
+
+void CoCInvestigator::setPrsnPts(int iVal)
+{
+    this->prsnPts = iVal;
 }
 
 CoCInvestigator::skillStruct CoCInvestigator::makeSkill(std::string sName, std::string sDesc, int baseVal)
