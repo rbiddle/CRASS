@@ -1,6 +1,4 @@
 #include "investigator.h"
-#include "iostream"
-#include "sstream"
 
 #include "objects/diceroller.h"
 
@@ -37,9 +35,4 @@ std::string Investigator::getCharDesc()
 void Investigator::setCharDesc( std::string inDesc )
 {
     this->data_desc = inDesc;
-}
-
-void Investigator::saveCharacter(std::string format, std::string location)
-{
-    //TODO: Save Investigator file in <<format>> at <<location>>
 }

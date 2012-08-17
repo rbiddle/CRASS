@@ -1,51 +1,14 @@
-#include "coc1920investigator.h"
+#include "coc6e1920investigator.h"
 
-#include "iostream"
+#include "sstream"
 #include "string"
 #include "vector"
 
-CoC1920Investigator::CoC1920Investigator()
+CoC6e1920Investigator::CoC6e1920Investigator()
 {
 }
 
-void CoC1920Investigator::OutputInvestigator()
-{
-    std::cout << "Outputting Investigator:" << std::endl;
-    std::cout << "Character Name: " << this->getCharName() << std::endl;
-    std::cout << "Player Name: " << this->getPlayerName() << std::endl;
-    std::cout << "Desc.: " << this->getCharDesc() << std::endl;
-    std::cout << "Rolled Stats:" << std::endl;
-    std::cout << "STR: " << this->getSTR() << std::endl;
-    std::cout << "SIZ: " << this->getSIZ() << std::endl;
-    std::cout << "CON: " << this->getCON() << std::endl;
-    std::cout << "DEX: " << this->getDEX() << std::endl;
-    std::cout << "APP: " << this->getAPP() << std::endl;
-    std::cout << "POW: " << this->getPOW() << std::endl;
-    std::cout << "INT: " << this->getINT() << std::endl;
-    std::cout << "EDU: " << this->getEDU() << std::endl;
-    std::cout << "Income: $" << this->getIncome() << std::endl;
-    std::cout << std::endl << "Derived Stats:" << std::endl;
-    std::cout << "Idea: " << this->getIDEA() << std::endl;
-    std::cout << "Luck: " << this->getLUCK() << std::endl;
-    std::cout << "Know: " << this->getKNOW() << std::endl;
-    std::cout << "Sanity: " << this->getSAN() << std::endl;
-    std::cout << "HP: " << this->getHP() << std::endl;
-    std::cout << "Dmg Bonus:" << this->getDmgBonus() << std::endl;
-    std::cout << "Cash: $" << this->getCash() << std::endl;
-    std::cout << "Savings: $" << this->getSavings() << std::endl;
-    std::cout << "MP: " << this->getMP() << std::endl;
-    std::cout << std::endl << "Skills:" << std::endl;
-    for ( unsigned int i=0; i < this->skills.size(); i++ )
-        std::cout << this->skills[i].desc << " ( " << this->skills[i].baseVal << " + "
-                                          << this->skills[i].incrOcpn << " Occupation + "
-                                          << this->skills[i].incrPrsn << " Personal Interest )" <<std::endl;
-    std::cout << "Skill Points:" << std::endl;
-    std::cout << "Occupational: " << this->getRemainingOcpnPts() << " remain out of " << this->getTotalOcpnPts() << " total points" << std::endl;
-    std::cout << "Personal Interest: " << this->getRemainingPrsnPts() << " remain out of " << this->getTotalPrsnPts() << " total points" << std::endl;
-
-}
-
-void CoC1920Investigator::setIncome(int iVal)
+void CoC6e1920Investigator::setIncome(int iVal)
 {
     double dSavings = iVal * 5;
     double dCash = iVal / 2;  //technically savings / 10, but ((income * 5)/10) = income/2
@@ -55,7 +18,7 @@ void CoC1920Investigator::setIncome(int iVal)
     this->setSavings(dSavings);
 }
 
-void CoC1920Investigator::setIncome()
+void CoC6e1920Investigator::setIncome()
 {
     int randomIncome = dice.rollDice(1,10);
     switch(randomIncome) {
@@ -90,17 +53,17 @@ void CoC1920Investigator::setIncome()
     }
 }
 
-void CoC1920Investigator::setCash(double dVal)
+void CoC6e1920Investigator::setCash(double dVal)
 {
     this->data_cash = dVal;
 }
 
-void CoC1920Investigator::setSavings(double dVal)
+void CoC6e1920Investigator::setSavings(double dVal)
 {
     this->data_savings = dVal;
 }
 
-void CoC1920Investigator::setDefaultSkills()
+void CoC6e1920Investigator::setDefaultSkills()
 {
     this->skills.push_back( this->makeSkill("dodge","Dodge",this->getDEX()*2) );
     this->skills.push_back( this->makeSkill("ownlanguage","Own Language",this->getEDU()*5) );
@@ -175,59 +138,59 @@ void CoC1920Investigator::setDefaultSkills()
     this->skills.push_back( this->makeSkill("kick","Kick",25) );
 }
 
-void CoC1920Investigator::create1920Investigator()
+void CoC6e1920Investigator::createInvestigator()
 {
     //Create character with randomly generated stats:
-    this->create1920Investigator( "Character Name"
-                                 ,"Player Name"
-                                 ,dice.rollDice(3,6)
-                                 ,dice.rollDice(3,6)
-                                 ,dice.rollDice(2,6)+6
-                                 ,dice.rollDice(3,6)
-                                 ,dice.rollDice(3,6)
-                                 ,dice.rollDice(2,6)+6
-                                 ,dice.rollDice(3,6)
-                                 ,dice.rollDice(3,6)+3
-                                 ,0
-                                  );
+    this->createInvestigator( "Character Name"
+                             ,"Player Name"
+                             ,dice.rollDice(3,6)
+                             ,dice.rollDice(3,6)
+                             ,dice.rollDice(2,6)+6
+                             ,dice.rollDice(3,6)
+                             ,dice.rollDice(3,6)
+                             ,dice.rollDice(2,6)+6
+                             ,dice.rollDice(3,6)
+                             ,dice.rollDice(3,6)+3
+                             ,0
+                              );
 }
 
-void CoC1920Investigator::create1920Investigator(std::string sCharName, std::string sPlayerName)
+void CoC6e1920Investigator::createInvestigator(std::string sCharName, std::string sPlayerName)
 {
     //Create character with randomly generated stats:
-    this->create1920Investigator( sCharName
-                                 ,sPlayerName
-                                 ,dice.rollDice(3,6)
-                                 ,dice.rollDice(3,6)
-                                 ,dice.rollDice(2,6)+6
-                                 ,dice.rollDice(3,6)
-                                 ,dice.rollDice(3,6)
-                                 ,dice.rollDice(2,6)+6
-                                 ,dice.rollDice(3,6)
-                                 ,dice.rollDice(3,6)+3
-                                 ,0
-                                  );
+    this->createInvestigator( sCharName
+                             ,sPlayerName
+                             ,dice.rollDice(3,6)
+                             ,dice.rollDice(3,6)
+                             ,dice.rollDice(2,6)+6
+                             ,dice.rollDice(3,6)
+                             ,dice.rollDice(3,6)
+                             ,dice.rollDice(2,6)+6
+                             ,dice.rollDice(3,6)
+                             ,dice.rollDice(3,6)+3
+                             ,0
+                              );
 }
 
-void CoC1920Investigator::create1920Investigator(std::string sCharName, std::string sPlayerName, std::string sDesc)
+void CoC6e1920Investigator::createInvestigator(std::string sCharName, std::string sPlayerName, std::string sDesc)
 {
     //Create character with randomly generated stats:
-    this->create1920Investigator( sCharName
-                                 ,sPlayerName
-                                 ,dice.rollDice(3,6)
-                                 ,dice.rollDice(3,6)
-                                 ,dice.rollDice(2,6)+6
-                                 ,dice.rollDice(3,6)
-                                 ,dice.rollDice(3,6)
-                                 ,dice.rollDice(2,6)+6
-                                 ,dice.rollDice(3,6)
-                                 ,dice.rollDice(3,6)+3
-                                 ,0
-                                  );
+    this->createInvestigator( sCharName
+                             ,sPlayerName
+                             ,dice.rollDice(3,6)
+                             ,dice.rollDice(3,6)
+                             ,dice.rollDice(2,6)+6
+                             ,dice.rollDice(3,6)
+                             ,dice.rollDice(3,6)
+                             ,dice.rollDice(2,6)+6
+                             ,dice.rollDice(3,6)
+                             ,dice.rollDice(3,6)+3
+                             ,0
+                              );
     this->setCharDesc(sDesc);
 }
 
-void CoC1920Investigator::create1920Investigator(std::string sCharName, std::string sPlayerName, int iSTR, int iCON, int iSIZ, int iDEX, int iAPP, int iINT, int iPOW, int iEDU, int iIncome)
+void CoC6e1920Investigator::createInvestigator(std::string sCharName, std::string sPlayerName, int iSTR, int iCON, int iSIZ, int iDEX, int iAPP, int iINT, int iPOW, int iEDU, int iIncome)
 {
     this->setStats(iSTR, iCON, iSIZ, iDEX, iAPP,iINT, iPOW, iEDU);
     this->setPlayerName(sPlayerName);
@@ -239,12 +202,14 @@ void CoC1920Investigator::create1920Investigator(std::string sCharName, std::str
     this->setDefaultSkills();
 }
 
-void CoC1920Investigator::saveInvestigator(std::string sFileName)
+void CoC6e1920Investigator::saveInvestigator(std::string sFileName)
 {
     // TODO: save invetigator to file
+    this->setCharName( ( this->getCharName() + " (Saved: " + sFileName + ")") );
 }
 
-void CoC1920Investigator::loadInvestigator(std::string sFileName)
+void CoC6e1920Investigator::loadInvestigator(std::string sFileName)
 {
     // TODO: read in invetigator from file
+    this->setCharName( (this->getCharName() + " (Loaded: " + sFileName + ")") );
 }

@@ -323,6 +323,20 @@ int CoCInvestigator::getSkill(std::string sSearch)
     return 0;
 }
 
+std::vector<skillStruct> CoCInvestigator::getSkillList()
+{
+    return this->skills;
+}
+
+void CoCInvestigator::updtSkillDesc(std::string sName, std::string sDesc)
+{
+    for ( unsigned int i=0; i < this->skills.size(); i++ )
+        if( this->skills[i].name == sName ) {
+            this->skills[i].desc = sDesc;
+            break;
+        }
+}
+
 void CoCInvestigator::setSkillBase(std::string sSearch, int iVal)
 {
     for ( unsigned int i=0; i < this->skills.size(); i++ )
@@ -386,7 +400,7 @@ void CoCInvestigator::setPrsnPts(int iVal)
     this->prsnPts = iVal;
 }
 
-CoCInvestigator::skillStruct CoCInvestigator::makeSkill(std::string sName, std::string sDesc, int baseVal)
+skillStruct CoCInvestigator::makeSkill(std::string sName, std::string sDesc, int baseVal)
 {
     skillStruct output;
     output.name = sName;
@@ -395,4 +409,45 @@ CoCInvestigator::skillStruct CoCInvestigator::makeSkill(std::string sName, std::
     output.incrOcpn = 0;
     output.incrPrsn = 0;
     return output;
+}
+
+std::string CoCInvestigator::debugOutputInvestigator()
+{
+    std::stringstream stream;
+
+    stream << "Outputting Investigator:" << std::endl;
+    stream << "  Character Name: " << this->getCharName() << std::endl;
+    stream << "  Player Name: " << this->getPlayerName() << std::endl;
+    stream << "  Desc.: " << this->getCharDesc() << std::endl;
+    stream << "  Rolled Stats:" << std::endl;
+    stream << "    STR: " << this->getSTR() << std::endl;
+    stream << "    SIZ: " << this->getSIZ() << std::endl;
+    stream << "    CON: " << this->getCON() << std::endl;
+    stream << "    DEX: " << this->getDEX() << std::endl;
+    stream << "    APP: " << this->getAPP() << std::endl;
+    stream << "    POW: " << this->getPOW() << std::endl;
+    stream << "    INT: " << this->getINT() << std::endl;
+    stream << "    EDU: " << this->getEDU() << std::endl;
+    stream << "    Income: $" << this->getIncome() << std::endl;
+    stream << "  Derived Stats:" << std::endl;
+    stream << "    Idea: " << this->getIDEA() << std::endl;
+    stream << "    Luck: " << this->getLUCK() << std::endl;
+    stream << "    Know: " << this->getKNOW() << std::endl;
+    stream << "    Sanity: " << this->getSAN() << std::endl;
+    stream << "    HP: " << this->getHP() << std::endl;
+    stream << "    Dmg Bonus:" << this->getDmgBonus() << std::endl;
+    stream << "    Cash: $" << this->getCash() << std::endl;
+    stream << "    Savings: $" << this->getSavings() << std::endl;
+    stream << "    MP: " << this->getMP() << std::endl;
+    stream << "  Skills:" << std::endl;
+    for ( unsigned int i=0; i < this->skills.size(); i++ )
+        stream << "    " << this->skills[i].desc << ": " << this->getSkill(this->skills[i].name) << " ( "
+                         << this->skills[i].incrOcpn << " Occupation + "
+                         << this->skills[i].incrPrsn << " Personal Interest )" <<std::endl;
+    stream << "  Skill Points: " << std::endl;
+    stream << "    Occupational: " << this->getRemainingOcpnPts() << " remain out of " << this->getTotalOcpnPts() << " total points" << std::endl;
+    stream << "    Personal Interest: " << this->getRemainingPrsnPts() << " remain out of " << this->getTotalPrsnPts() << " total points" << std::endl;
+    stream << "==========================================" << std::endl;
+
+    return stream.str();
 }

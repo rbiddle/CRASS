@@ -5,10 +5,21 @@
 #include "vector"
 #include "investigator.h"
 
+struct skillStruct
+{
+    std::string name;
+    std::string desc;
+    int baseVal;
+    int incrOcpn;
+    int incrPrsn;
+};
+
 class CoCInvestigator : public Investigator
 {
 public:
     CoCInvestigator();
+    std::string debugOutputInvestigator();
+
     void setStats();
     void setStats (int iSTR, int iCON, int iSIZ, int iDEX, int iAPP, int iINT, int iPOW, int iEDU);
 
@@ -55,6 +66,8 @@ public:
     double getSavings();
 
     int getSkill(std::string sSearch);
+    std::vector<skillStruct> getSkillList();
+    void updtSkillDesc(std::string sName, std::string sDesc);
     void setSkillBase(std::string sSearch, int iVal);
     void incrSkillOcpn(std::string sSearch, int iVal);
     void incrSkillPrsn(std::string sSearch, int iVal);
@@ -111,14 +124,6 @@ protected:
 
     std::string calcDmgBonus();
 
-    struct skillStruct
-    {
-        std::string name;
-        std::string desc;
-        int baseVal;
-        int incrOcpn;
-        int incrPrsn;
-    };
     std::vector<skillStruct> skills;
     skillStruct makeSkill(std::string sName, std::string sDesc, int baseVal);
 };

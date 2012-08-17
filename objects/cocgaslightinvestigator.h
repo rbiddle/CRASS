@@ -10,6 +10,9 @@ class CoCGaslightInvestigator : public CoCInvestigator
 public:
     CoCGaslightInvestigator();
 
+    void saveInvestigator(std::string sFileName);
+    void loadInvestigator(std::string sFileName);
+
 private:
     std::string data_socialclass;
     std::string data_addictions;

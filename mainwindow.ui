@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>598</width>
+    <width>739</width>
     <height>558</height>
    </rect>
   </property>
@@ -19,7 +19,7 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>581</width>
+      <width>721</width>
       <height>521</height>
      </rect>
     </property>
@@ -30,14 +30,23 @@
      <attribute name="title">
       <string>Debug Data</string>
      </attribute>
-     <widget class="QTextBrowser" name="textBrowser">
+     <widget class="QTextBrowser" name="debugTextArea">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>561</width>
+        <width>701</width>
         <height>481</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Courier</family>
+        <pointsize>10</pointsize>
+       </font>
       </property>
      </widget>
     </widget>
@@ -58,7 +67,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>598</width>
+     <width>739</width>
      <height>18</height>
     </rect>
    </property>
@@ -66,12 +75,19 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionNew"/>
+    <widget class="QMenu" name="menuNew">
+     <property name="title">
+      <string>New...</string>
+     </property>
+     <addaction name="action6th_Edition_1920s_Investigator"/>
+     <addaction name="actionGaslight_Investigator"/>
+    </widget>
+    <addaction name="menuNew"/>
     <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
+    <addaction name="actionSave_As"/>
     <addaction name="separator"/>
     <addaction name="actionExport"/>
-    <addaction name="actionImport"/>
     <addaction name="separator"/>
     <addaction name="actionQuit"/>
    </widget>
@@ -79,21 +95,14 @@
     <property name="title">
      <string>About</string>
     </property>
-    <addaction name="actionAbout_CRASS"/>
     <addaction name="actionHelp"/>
+    <addaction name="separator"/>
     <addaction name="actionDebug_Mode"/>
+    <addaction name="actionOutput_Investigator"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuAbout"/>
   </widget>
-  <action name="actionNew">
-   <property name="text">
-    <string>New...</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+N</string>
-   </property>
-  </action>
   <action name="actionOpen">
    <property name="text">
     <string>Open</string>
@@ -118,14 +127,9 @@
     <string>Ctrl+Q</string>
    </property>
   </action>
-  <action name="actionAbout_CRASS">
-   <property name="text">
-    <string>About CRASS</string>
-   </property>
-  </action>
   <action name="actionHelp">
    <property name="text">
-    <string>Help</string>
+    <string>Help/About</string>
    </property>
    <property name="shortcut">
     <string>F1</string>
@@ -150,9 +154,24 @@
     <string>Export...</string>
    </property>
   </action>
-  <action name="actionImport">
+  <action name="action6th_Edition_1920s_Investigator">
    <property name="text">
-    <string>Import</string>
+    <string>6th Edition 1920s Investigator</string>
+   </property>
+  </action>
+  <action name="actionGaslight_Investigator">
+   <property name="text">
+    <string>Gaslight Investigator</string>
+   </property>
+  </action>
+  <action name="actionOutput_Investigator">
+   <property name="text">
+    <string>Output Investigator</string>
+   </property>
+  </action>
+  <action name="actionSave_As">
+   <property name="text">
+    <string>Save As...</string>
    </property>
   </action>
  </widget>

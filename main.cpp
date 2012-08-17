@@ -3,18 +3,16 @@
 #include "stdio.h"
 #include "iostream"
 
-#include "objects/coc1920investigator.h"
+#include "objects/coc6e1920investigator.h"
+#include "objects/cocgaslightinvestigator.h"
+
+CoC6e1920Investigator objCoC6e1920Inv;
+CoCGaslightInvestigator objCoCGaslightInv;
+Investigator * investigatorPtr;
+QString saveFileName = "";
 
 int main(int argc, char *argv[])
 {
-    CoC1920Investigator test = CoC1920Investigator();
-    test.create1920Investigator("Chester the Character", "Rob the Player", "A shifty man...");
-
-    test.incrSkillOcpn("headbutt", 10);
-    test.incrSkillPrsn("Head Butt", 15);
-
-    test.OutputInvestigator();
-
     QApplication a(argc, argv);
     MainWindow w;
     w.show();

@@ -16,7 +16,8 @@ public:
     std::string getCharDesc();
     void setCharDesc( std::string inDesc );
 
-    void saveCharacter( std::string format, std::string location );
+    virtual void saveInvestigator(std::string sFileName) = 0;
+    virtual void loadInvestigator(std::string sFileName) = 0;
 
 protected:
     std::string data_charname;
