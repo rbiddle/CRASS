@@ -31,6 +31,7 @@ public:
     void setINT( int iVal );
     void setPOW( int iVal );
     void setEDU( int iVal );
+    void setEDUNoAge( int iVal );
     void setSAN( int iVal );
     void setIDEA( int iVal );
     void setLUCK( int iVal );
@@ -53,6 +54,21 @@ public:
     int getMP();
     void setDmgBonus( std::string iVal );
     std::string getDmgBonus();
+
+    std::string getOccupation();
+    void setOccupation( std::string sVal);
+    std::string getEducation();
+    void setEducation( std::string sVal );
+    std::string getBirthplace();
+    void setBirthplace( std::string sVal );
+    std::string getDisorders();
+    void setDisorders( std::string sVal );
+    std::string getSex();
+    void setSex( std::string sVal );
+    int getAge();
+    void setAge( int iVal );
+    int getStartAge();
+    void setStartAge( int iVal );
 
     int getCurrSan();
     int getCurrHP();
@@ -85,6 +101,7 @@ protected:
     std::string data_disorders;
     std::string data_sex;
     int data_age;
+    int data_start_age;
     std::string data_residence;
     std::string data_familyfriends;
     std::string data_insanities;

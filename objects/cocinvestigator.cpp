@@ -175,7 +175,21 @@ int CoCInvestigator::getPOW() {
     return this->stat_pow;
 }
 
-void CoCInvestigator::setEDU( int iVal ) {
+void CoCInvestigator::setEDU( int iVal )
+{
+    this->stat_edu = iVal;
+    this->setKNOW( (this->getEDU() * 5) );
+    if ( this->getSkill("ownlanguage") < (iVal * 5) )
+        this->setSkillBase("ownlanguage", iVal * 5);
+
+    this->setOcpnPts(this->getEDU() * 20);
+
+    this->setStartAge( this->getEDU()+6 );
+    this->setAge( this->getEDU()+6 );
+}
+
+void CoCInvestigator::setEDUNoAge(int iVal)
+{
     this->stat_edu = iVal;
     this->setKNOW( (this->getEDU() * 5) );
     if ( this->getSkill("ownlanguage") < (iVal * 5) )
@@ -197,7 +211,10 @@ int CoCInvestigator::getSAN() {
 }
 
 void CoCInvestigator::setIDEA( int iVal ) {
-    this->stat_idea = iVal;
+    if (iVal >= 100)
+        this->stat_idea = 99;
+    else
+        this->stat_idea = iVal;
 }
 
 int CoCInvestigator::getIDEA() {
@@ -205,7 +222,10 @@ int CoCInvestigator::getIDEA() {
 }
 
 void CoCInvestigator::setLUCK( int iVal ) {
-    this->stat_luck = iVal;
+    if (iVal >= 100)
+        this->stat_luck = 99;
+    else
+        this->stat_luck = iVal;
 }
 
 int CoCInvestigator::getLUCK() {
@@ -213,7 +233,10 @@ int CoCInvestigator::getLUCK() {
 }
 
 void CoCInvestigator::setKNOW( int iVal ) {
-    this->stat_know = iVal;
+    if (iVal >= 100)
+        this->stat_know = 99;
+    else
+        this->stat_know = iVal;
 }
 
 int CoCInvestigator::getKNOW() {
@@ -225,7 +248,77 @@ void CoCInvestigator::setDmgBonus( std::string iVal ) {
 }
 
 std::string CoCInvestigator::getDmgBonus() {
-   return this->stat_dmgbonus;
+    return this->stat_dmgbonus;
+}
+
+std::string CoCInvestigator::getOccupation()
+{
+    return this->data_occupation;
+}
+
+void CoCInvestigator::setOccupation( std::string sVal )
+{
+    this->data_occupation = sVal;
+}
+
+std::string CoCInvestigator::getEducation()
+{
+    return this->data_education;
+}
+
+void CoCInvestigator::setEducation(std::string sVal)
+{
+    this->data_education = sVal;
+}
+
+std::string CoCInvestigator::getBirthplace()
+{
+    return this->data_birthplace;
+}
+
+void CoCInvestigator::setBirthplace(std::string sVal)
+{
+    this->data_birthplace = sVal;
+}
+
+std::string CoCInvestigator::getDisorders()
+{
+    return this->data_disorders;
+}
+
+void CoCInvestigator::setDisorders(std::string sVal)
+{
+    this->data_disorders = sVal;
+}
+
+std::string CoCInvestigator::getSex()
+{
+    return this->data_sex;
+}
+
+void CoCInvestigator::setSex(std::string sVal)
+{
+    this->data_sex = sVal;
+}
+
+int CoCInvestigator::getAge()
+{
+    return this->data_age;
+}
+
+void CoCInvestigator::setAge(int iVal)
+{
+    this->data_age = iVal;
+}
+
+int CoCInvestigator::getStartAge()
+{
+    return this->data_start_age;
+}
+
+void CoCInvestigator::setStartAge(int iVal)
+{
+    this->data_start_age = iVal;
 }
 
 void CoCInvestigator::setHP( int iVal ) {
@@ -419,6 +512,7 @@ std::string CoCInvestigator::debugOutputInvestigator()
     stream << "  Character Name: " << this->getCharName() << std::endl;
     stream << "  Player Name: " << this->getPlayerName() << std::endl;
     stream << "  Desc.: " << this->getCharDesc() << std::endl;
+    stream << "  Occupation: " << this->getOccupation() << std::endl;
     stream << "  Rolled Stats:" << std::endl;
     stream << "    STR: " << this->getSTR() << std::endl;
     stream << "    SIZ: " << this->getSIZ() << std::endl;
@@ -439,14 +533,14 @@ std::string CoCInvestigator::debugOutputInvestigator()
     stream << "    Cash: $" << this->getCash() << std::endl;
     stream << "    Savings: $" << this->getSavings() << std::endl;
     stream << "    MP: " << this->getMP() << std::endl;
+    stream << "  Skill Points: " << std::endl;
+    stream << "    Occupational: " << this->getRemainingOcpnPts() << " remain out of " << this->getTotalOcpnPts() << " total points" << std::endl;
+    stream << "    Personal Interest: " << this->getRemainingPrsnPts() << " remain out of " << this->getTotalPrsnPts() << " total points" << std::endl;
     stream << "  Skills:" << std::endl;
     for ( unsigned int i=0; i < this->skills.size(); i++ )
         stream << "    " << this->skills[i].desc << ": " << this->getSkill(this->skills[i].name) << " ( "
                          << this->skills[i].incrOcpn << " Occupation + "
                          << this->skills[i].incrPrsn << " Personal Interest )" <<std::endl;
-    stream << "  Skill Points: " << std::endl;
-    stream << "    Occupational: " << this->getRemainingOcpnPts() << " remain out of " << this->getTotalOcpnPts() << " total points" << std::endl;
-    stream << "    Personal Interest: " << this->getRemainingPrsnPts() << " remain out of " << this->getTotalPrsnPts() << " total points" << std::endl;
     stream << "==========================================" << std::endl;
 
     return stream.str();

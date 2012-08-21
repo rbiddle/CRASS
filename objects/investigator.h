@@ -18,6 +18,10 @@ public:
 
     virtual void saveInvestigator(std::string sFileName) = 0;
     virtual void loadInvestigator(std::string sFileName) = 0;
+    virtual void setIncome( int iVal ) = 0;
+    virtual void setIncome() = 0;
+    virtual void setCash( double dVal ) = 0;
+    virtual void setSavings( double dVal ) = 0;
 
 protected:
     std::string data_charname;

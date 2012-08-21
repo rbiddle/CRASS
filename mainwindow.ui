@@ -24,11 +24,11 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="debugDataTab">
      <attribute name="title">
-      <string>Debug Data</string>
+      <string>Debug</string>
      </attribute>
      <widget class="QTextBrowser" name="debugTextArea">
       <property name="enabled">
@@ -50,12 +50,1023 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="basicTab">
+    <widget class="QWidget" name="menuTab">
+     <attribute name="title">
+      <string>Main Menu</string>
+     </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget_4">
+      <property name="geometry">
+       <rect>
+        <x>9</x>
+        <y>10</y>
+        <width>701</width>
+        <height>481</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="text">
+          <string>Create 6th Edition 1920s Investigator</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="cocBasicTab">
      <attribute name="title">
       <string>Basic Data &amp;&amp; Charactaristics</string>
      </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>9</y>
+        <width>701</width>
+        <height>481</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <layout class="QHBoxLayout" name="hLayoutBasicData">
+         <item>
+          <layout class="QVBoxLayout" name="vLayoutData">
+           <item>
+            <layout class="QHBoxLayout" name="hLayoutInvestigatorName">
+             <item>
+              <widget class="QLabel" name="cocInvestigatorNameLabel">
+               <property name="text">
+                <string>Investigator Name:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="cocInvestigatorNameLineEdit"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hLayoutPlayerName">
+             <item>
+              <widget class="QLabel" name="cocPlayerNameLabel">
+               <property name="text">
+                <string>Player Name:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="cocPlayerNameLineEdit"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hLayoutOccupation">
+             <item>
+              <widget class="QLabel" name="cocOccupationLabel">
+               <property name="text">
+                <string>Occupation:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="cocOccupationComboBox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="editable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hLayoutColleges">
+             <item>
+              <widget class="QLabel" name="cocEducationLabel">
+               <property name="text">
+                <string>Colleges/Degrees:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="cocEducationLineEdit"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hLayoutBirthplace">
+             <item>
+              <widget class="QLabel" name="cocBirthplaceLabel">
+               <property name="text">
+                <string>Birthplace:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="cocBirthplaceLineEdit"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hLayoutDisorders">
+             <item>
+              <widget class="QLabel" name="cocDisordersLabel">
+               <property name="text">
+                <string>Mental Disorders:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="cocDisordersLineEdit"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hLayoutAgeSex">
+             <item>
+              <widget class="QLabel" name="cocSexLabel">
+               <property name="text">
+                <string>Sex:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="cocSexLineEdit">
+               <property name="maxLength">
+                <number>6</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_11">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="cocAgeLabel">
+               <property name="text">
+                <string>Age:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="cocAgeSpinner"/>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="vLayoutStats">
+           <property name="spacing">
+            <number>4</number>
+           </property>
+           <item>
+            <layout class="QHBoxLayout" name="hLayoutSTRDEXINT">
+             <item>
+              <widget class="QLabel" name="cocSTRLabel">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>STR</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::RichText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="cocSTRSpinner">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::UpDownArrows</enum>
+               </property>
+               <property name="keyboardTracking">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_8">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>10</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="cocDEXLabel">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>DEX</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::RichText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="cocDEXSpinner">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::UpDownArrows</enum>
+               </property>
+               <property name="keyboardTracking">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_9">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>10</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="cocINTLabel">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>INT</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::RichText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="cocINTSpinner">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::UpDownArrows</enum>
+               </property>
+               <property name="keyboardTracking">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_10">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>10</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="cocIdeaLabel">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Idea</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::RichText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="cocIdeaLineEdit">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>30</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="maxLength">
+                <number>5</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hLayoutCONAPPPOW">
+             <item>
+              <widget class="QLabel" name="cocCONLabel">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>CON</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::RichText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="cocCONSpinner">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::UpDownArrows</enum>
+               </property>
+               <property name="keyboardTracking">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_5">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>10</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="cocAPPLabel">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>APP</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::RichText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="cocAPPSpinner">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::UpDownArrows</enum>
+               </property>
+               <property name="keyboardTracking">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_6">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>10</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="cocPOWLabel">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>POW</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::RichText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="cocPOWSpinner">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::UpDownArrows</enum>
+               </property>
+               <property name="keyboardTracking">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_7">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>10</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="cocLuckLabel">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Luck</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::RichText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="cocLuckLineEdit">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>30</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="maxLength">
+                <number>5</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hLayoutSIZSANEDU">
+             <item>
+              <widget class="QLabel" name="cocSIZLabel">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>SIZ</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::RichText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="cocSIZSpinner">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::UpDownArrows</enum>
+               </property>
+               <property name="keyboardTracking">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>10</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="cocSANLabel">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>SAN</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::RichText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="cocSANSpinner">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::UpDownArrows</enum>
+               </property>
+               <property name="keyboardTracking">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>10</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="cocEDULabel">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>EDU</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::RichText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="cocEDUSpinner">
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+               <property name="buttonSymbols">
+                <enum>QAbstractSpinBox::UpDownArrows</enum>
+               </property>
+               <property name="keyboardTracking">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_4">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>10</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="cocKnowLabel">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Know</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::RichText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="cocKnowLineEdit">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>30</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="maxLength">
+                <number>5</number>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hLayoutMythosDB_2">
+             <item>
+              <widget class="QLabel" name="cocHitPointsLabel">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>HP</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::RichText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="cocCurrHPLineEdit">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>30</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="maxLength">
+                <number>5</number>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>out of</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="cocMaxHPLabel">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>0</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="cocSanityLabel">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Sanity</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::RichText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="cocCurrSanityLineEdit">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>30</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="maxLength">
+                <number>5</number>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>out of</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="cocMaxSanityLabel">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>0</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="cocMagicPointsLabel">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>MP</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::RichText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="cocCurrMPLineEdit">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>30</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="maxLength">
+                <number>5</number>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>out of</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="cocMaxMPLabel">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>0</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="hLayoutMythosDB">
+             <item>
+              <widget class="QLabel" name="cocMaxSanLabel">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>99 - Cthulhu Mythos:</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::RichText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="cocMaxSanLineEdit">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>30</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="maxLength">
+                <number>5</number>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="cocDamageBonusLabel">
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>Damage Bonus:</string>
+               </property>
+               <property name="textFormat">
+                <enum>Qt::RichText</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="cocDamageBonusLineEdit">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>79</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="maxLength">
+                <number>5</number>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="cocCharDecLabel">
+         <property name="text">
+          <string>Character Description:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPlainTextEdit" name="cocCharDescTextEdit"/>
+       </item>
+      </layout>
+     </widget>
     </widget>
-    <widget class="QWidget" name="skillTab">
+    <widget class="QWidget" name="cocSkillTab">
      <attribute name="title">
       <string>Skills</string>
      </attribute>
@@ -172,6 +1183,11 @@
   <action name="actionSave_As">
    <property name="text">
     <string>Save As...</string>
+   </property>
+  </action>
+  <action name="actionAllow_Stat_Overrides">
+   <property name="text">
+    <string>Allow Stat Overrides</string>
    </property>
   </action>
  </widget>

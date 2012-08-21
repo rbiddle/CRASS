@@ -10,6 +10,11 @@ class CoCGaslightInvestigator : public CoCInvestigator
 public:
     CoCGaslightInvestigator();
 
+    void setIncome( int iVal );
+    void setIncome();
+    void setCash( double dVal );
+    void setSavings( double dVal );
+
     void saveInvestigator(std::string sFileName);
     void loadInvestigator(std::string sFileName);
 
