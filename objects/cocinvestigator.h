@@ -81,12 +81,19 @@ public:
     double getCash();
     double getSavings();
 
-    int getSkill(std::string sSearch);
+    int getSkillPts( std::string sSearch );
+    int getSkillOcpnPts( std::string sSearch );
+    int getSkillPrsnPts( std::string sSearch );
+    int getSkillBasePts( std::string sSearch );
     std::vector<skillStruct> getSkillList();
-    void updtSkillDesc(std::string sName, std::string sDesc);
-    void setSkillBase(std::string sSearch, int iVal);
-    void incrSkillOcpn(std::string sSearch, int iVal);
-    void incrSkillPrsn(std::string sSearch, int iVal);
+    void updtSkillDesc( std::string sName, std::string sDesc );
+    void setSkillBase( std::string sSearch, int iVal );
+    void incrSkillOcpn( std::string sSearch, int iVal );
+    void incrSkillPrsn( std::string sSearch, int iVal );
+    bool isOccupationalSkill( std::string sSkill );
+    void addOccupationalSkill( std::string sSkill );
+    void removeOccupationalSkill( std::string sSkill );
+    void clearOccupationalSkills();
     int getTotalOcpnPts();
     int getRemainingOcpnPts();
     int getTotalPrsnPts();
@@ -143,6 +150,7 @@ protected:
 
     std::vector<skillStruct> skills;
     skillStruct makeSkill(std::string sName, std::string sDesc, int baseVal);
+    std::vector<std::string> occupationSkills;
 };
 
 #endif // COCINVESTIGATOR_H

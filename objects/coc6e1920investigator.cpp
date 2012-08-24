@@ -65,9 +65,6 @@ void CoC6e1920Investigator::setSavings(double dVal)
 
 void CoC6e1920Investigator::setDefaultSkills()
 {
-    this->skills.push_back( this->makeSkill("dodge","Dodge",this->getDEX()*2) );
-    this->skills.push_back( this->makeSkill("ownlanguage","Own Language",this->getEDU()*5) );
-
     this->skills.push_back( this->makeSkill("accounting","Accounting",10) );
     this->skills.push_back( this->makeSkill("anthropology","Anthropology",1) );
     this->skills.push_back( this->makeSkill("archaeology","Archaeology",1) );
@@ -82,6 +79,7 @@ void CoC6e1920Investigator::setDefaultSkills()
     this->skills.push_back( this->makeSkill("creditrating","Credit Rating",15) );
     this->skills.push_back( this->makeSkill("cthulhumythos","Cthulhu Mythos",0) );
     this->skills.push_back( this->makeSkill("disguise","Disguise",1) );
+    this->skills.push_back( this->makeSkill("dodge","Dodge",this->getDEX()*2) );
     this->skills.push_back( this->makeSkill("driveauto","Drive Auto",20) );
     this->skills.push_back( this->makeSkill("electrrepair","Electronic Repair",10) );
     this->skills.push_back( this->makeSkill("fasttalk","Fast Talk",5) );
@@ -101,6 +99,7 @@ void CoC6e1920Investigator::setDefaultSkills()
     this->skills.push_back( this->makeSkill("navigate","Navigate",10) );
     this->skills.push_back( this->makeSkill("occult","Occult",5) );
     this->skills.push_back( this->makeSkill("oprhvymch","Operate Heavy Machinary",1) );
+    this->skills.push_back( this->makeSkill("ownlanguage","Own Language",this->getEDU()*5) );
     this->skills.push_back( this->makeSkill("otherlanguage1","Other Language #1",1) );
     this->skills.push_back( this->makeSkill("otherlanguage2","Other Language #2",1) );
     this->skills.push_back( this->makeSkill("otherlanguage3","Other Language #3",1) );
@@ -117,25 +116,35 @@ void CoC6e1920Investigator::setDefaultSkills()
     this->skills.push_back( this->makeSkill("swim","Swim",25) );
     this->skills.push_back( this->makeSkill("throw","Throw",25) );
     this->skills.push_back( this->makeSkill("track","Track",10) );
-    this->skills.push_back( this->makeSkill("custom1","Custom Skill #1",0) );
-    this->skills.push_back( this->makeSkill("custom2","Custom Skill #2",0) );
-    this->skills.push_back( this->makeSkill("custom3","Custom Skill #3",0) );
-    this->skills.push_back( this->makeSkill("custom4","Custom Skill #4",0) );
-    this->skills.push_back( this->makeSkill("custom5","Custom Skill #5",0) );
-    this->skills.push_back( this->makeSkill("custom6","Custom Skill #6",0) );
-    this->skills.push_back( this->makeSkill("custom7","Custom Skill #7",0) );
-    this->skills.push_back( this->makeSkill("custom8","Custom Skill #8",0) );
-    this->skills.push_back( this->makeSkill("custom9","Custom Skill #9",0) );
-    this->skills.push_back( this->makeSkill("custom10","Custom Skill #10",0) );
-    this->skills.push_back( this->makeSkill("handgun","Handgun",20) );
-    this->skills.push_back( this->makeSkill("machinegun","Machine Gun",15) );
-    this->skills.push_back( this->makeSkill("rifle","Rifle",25) );
-    this->skills.push_back( this->makeSkill("shotgun","Shotgun",30) );
-    this->skills.push_back( this->makeSkill("smg","SMG",15) );
-    this->skills.push_back( this->makeSkill("fist","Fist",50) );
-    this->skills.push_back( this->makeSkill("grapple","Grapple",25) );
-    this->skills.push_back( this->makeSkill("headbutt","Head Butt",10) );
-    this->skills.push_back( this->makeSkill("kick","Kick",25) );
+    this->skills.push_back( this->makeSkill("zzcustom1","Custom Skill #1",0) );
+    this->skills.push_back( this->makeSkill("zzcustom2","Custom Skill #2",0) );
+    this->skills.push_back( this->makeSkill("zzcustom3","Custom Skill #3",0) );
+    this->skills.push_back( this->makeSkill("zzcustom4","Custom Skill #4",0) );
+    this->skills.push_back( this->makeSkill("zzcustom5","Custom Skill #5",0) );
+    this->skills.push_back( this->makeSkill("zzcustom6","Custom Skill #6",0) );
+    this->skills.push_back( this->makeSkill("zzcustom7","Custom Skill #7",0) );
+    this->skills.push_back( this->makeSkill("zzcustom8","Custom Skill #8",0) );
+    this->skills.push_back( this->makeSkill("zzcustom9","Custom Skill #9",0) );
+    this->skills.push_back( this->makeSkill("f_handgun","Handgun",20) );
+    this->skills.push_back( this->makeSkill("f_machinegun","Machine Gun",15) );
+    this->skills.push_back( this->makeSkill("f_rifle","Rifle",25) );
+    this->skills.push_back( this->makeSkill("f_shotgun","Shotgun",30) );
+    this->skills.push_back( this->makeSkill("f_smg","SMG",15) );
+    this->skills.push_back( this->makeSkill("f_zzcustom1","Custom Firearm #1",0) );
+    this->skills.push_back( this->makeSkill("f_zzcustom2","Custom Firearm #2",0) );
+    this->skills.push_back( this->makeSkill("f_zzcustom3","Custom Firearm #3",0) );
+    this->skills.push_back( this->makeSkill("f_zzcustom4","Custom Firearm #4",0) );
+    this->skills.push_back( this->makeSkill("f_zzcustom5","Custom Firearm #5",0) );
+    this->skills.push_back( this->makeSkill("m_fist","Fist",50) );
+    this->skills.push_back( this->makeSkill("m_kick","Kick",25) );
+    this->skills.push_back( this->makeSkill("m_grapple","Grapple",25) );
+    this->skills.push_back( this->makeSkill("m_headbutt","Head Butt",10) );
+    this->skills.push_back( this->makeSkill("m_zzcustom1","Custom Melee #1",0) );
+    this->skills.push_back( this->makeSkill("m_zzcustom2","Custom Melee #2",0) );
+    this->skills.push_back( this->makeSkill("m_zzcustom3","Custom Melee #3",0) );
+    this->skills.push_back( this->makeSkill("m_zzcustom4","Custom Melee #4",0) );
+    this->skills.push_back( this->makeSkill("m_zzcustom5","Custom Melee #5",0) );
+    this->skills.push_back( this->makeSkill("m_zzcustom6","Custom Melee #6",0) );
 }
 
 void CoC6e1920Investigator::createInvestigator()

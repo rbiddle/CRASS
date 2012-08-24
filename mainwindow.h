@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "QPushButton"
 
 namespace Ui {
 class MainWindow;
@@ -15,8 +16,12 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void refreshCoCBasicDataTab();
-    
+    void refreshCoCSkillsTab();
+    void setupCoCSkillButtons(QStringList skills);
+
 private slots:
+    void cocSkillButtonClicked();
+
     void on_actionDebug_Mode_triggered();
 
     void on_action6th_Edition_1920s_Investigator_triggered();
@@ -53,8 +58,6 @@ private slots:
 
     void on_cocSTRSpinner_valueChanged(int arg1);
 
-    void on_pushButton_clicked();
-
     void on_cocCONSpinner_valueChanged(int arg1);
 
     void on_cocSIZSpinner_valueChanged(int arg1);
@@ -72,6 +75,22 @@ private slots:
     void on_cocEDUSpinner_valueChanged(int arg1);
 
     void on_cocCharDescTextEdit_textChanged();
+
+    void on_cocCurrentSkillOcpnPtsSpinner_valueChanged(int arg1);
+
+    void on_cocCurrentSkillPrsnPtsSpinner_valueChanged(int arg1);
+
+    void on_cocCurrentSkillOcpnPtsSlider_valueChanged(int value);
+
+    void on_cocCurrentSkillPrsnPtsSlider_valueChanged(int value);
+
+    void on_cocCurrentSkillOcpnCheckBox_clicked();
+
+    void on_tabWidget_selected(const QString &arg1);
+
+    void on_cocCurrentSkillLineEdit_editingFinished();
+
+    void on_create6e1920InvestigatorPushButton_clicked();
 
 private:
     Ui::MainWindow *ui;

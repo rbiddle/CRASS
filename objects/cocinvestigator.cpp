@@ -128,7 +128,7 @@ int CoCInvestigator::getSIZ() {
 
 void CoCInvestigator::setDEX( int iVal ) {
     this->stat_dex = iVal;
-    if ( this->getSkill("dodge") < (iVal * 2) )
+    if ( this->getSkillPts("dodge") < (iVal * 2) )
         this->setSkillBase("dodge", iVal * 2);
 }
 
@@ -179,7 +179,7 @@ void CoCInvestigator::setEDU( int iVal )
 {
     this->stat_edu = iVal;
     this->setKNOW( (this->getEDU() * 5) );
-    if ( this->getSkill("ownlanguage") < (iVal * 5) )
+    if ( this->getSkillPts("ownlanguage") < (iVal * 5) )
         this->setSkillBase("ownlanguage", iVal * 5);
 
     this->setOcpnPts(this->getEDU() * 20);
@@ -192,7 +192,7 @@ void CoCInvestigator::setEDUNoAge(int iVal)
 {
     this->stat_edu = iVal;
     this->setKNOW( (this->getEDU() * 5) );
-    if ( this->getSkill("ownlanguage") < (iVal * 5) )
+    if ( this->getSkillPts("ownlanguage") < (iVal * 5) )
         this->setSkillBase("ownlanguage", iVal * 5);
 
     this->setOcpnPts(this->getEDU() * 20);
@@ -408,11 +408,35 @@ double CoCInvestigator::getSavings()
     return this->data_savings;
 }
 
-int CoCInvestigator::getSkill(std::string sSearch)
+int CoCInvestigator::getSkillPts(std::string sSearch)
 {
     for ( unsigned int i=0; i < this->skills.size(); i++ )
         if( (this->skills[i].name == sSearch) || (this->skills[i].desc == sSearch) )
             return ( this->skills[i].baseVal + this->skills[i].incrOcpn + this->skills[i].incrPrsn );
+    return 0;
+}
+
+int CoCInvestigator::getSkillOcpnPts(std::string sSearch)
+{
+    for ( unsigned int i=0; i < this->skills.size(); i++ )
+        if( (this->skills[i].name == sSearch) || (this->skills[i].desc == sSearch) )
+            return this->skills[i].incrOcpn;
+    return 0;
+}
+
+int CoCInvestigator::getSkillPrsnPts(std::string sSearch)
+{
+    for ( unsigned int i=0; i < this->skills.size(); i++ )
+        if( (this->skills[i].name == sSearch) || (this->skills[i].desc == sSearch) )
+            return this->skills[i].incrPrsn;
+    return 0;
+}
+
+int CoCInvestigator::getSkillBasePts(std::string sSearch)
+{
+    for ( unsigned int i=0; i < this->skills.size(); i++ )
+        if( (this->skills[i].name == sSearch) || (this->skills[i].desc == sSearch) )
+            return this->skills[i].baseVal;
     return 0;
 }
 
@@ -455,6 +479,34 @@ void CoCInvestigator::incrSkillPrsn(std::string sSearch, int iVal)
             this->skills[i].incrPrsn = iVal;
             break;
         }
+}
+
+bool CoCInvestigator::isOccupationalSkill(std::string sSkill)
+{
+    for ( unsigned int i=0; i < this->occupationSkills.size(); i++ )
+        if( (this->occupationSkills.at(i) == sSkill) ) {
+            return true;
+        }
+    return false;
+}
+
+void CoCInvestigator::addOccupationalSkill(std::string sSkill)
+{
+    this->occupationSkills.push_back(sSkill);
+}
+
+void CoCInvestigator::removeOccupationalSkill(std::string sSkill)
+{
+    for ( unsigned int i=0; i < this->occupationSkills.size(); i++ )
+        if( (this->occupationSkills.at(i) == sSkill) ) {
+//            this->occupationSkills.erase(i);
+            this->occupationSkills.erase(this->occupationSkills.begin()+i);
+        }
+}
+
+void CoCInvestigator::clearOccupationalSkills()
+{
+    this->occupationSkills.clear();
 }
 
 int CoCInvestigator::getTotalOcpnPts()
@@ -538,7 +590,8 @@ std::string CoCInvestigator::debugOutputInvestigator()
     stream << "    Personal Interest: " << this->getRemainingPrsnPts() << " remain out of " << this->getTotalPrsnPts() << " total points" << std::endl;
     stream << "  Skills:" << std::endl;
     for ( unsigned int i=0; i < this->skills.size(); i++ )
-        stream << "    " << this->skills[i].desc << ": " << this->getSkill(this->skills[i].name) << " ( "
+        stream << "    " << this->skills[i].desc << ": " << this->getSkillPts(this->skills[i].name) << " ( "
+                         << this->skills[i].baseVal << " Base + "
                          << this->skills[i].incrOcpn << " Occupation + "
                          << this->skills[i].incrPrsn << " Personal Interest )" <<std::endl;
     stream << "==========================================" << std::endl;

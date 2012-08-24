@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>739</width>
-    <height>558</height>
+    <width>782</width>
+    <height>682</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,12 +19,12 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>721</width>
-      <height>521</height>
+      <width>761</width>
+      <height>641</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="debugDataTab">
      <attribute name="title">
@@ -38,8 +38,8 @@
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>701</width>
-        <height>481</height>
+        <width>741</width>
+        <height>601</height>
        </rect>
       </property>
       <property name="font">
@@ -59,13 +59,13 @@
        <rect>
         <x>9</x>
         <y>10</y>
-        <width>701</width>
-        <height>481</height>
+        <width>741</width>
+        <height>161</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="create6e1920InvestigatorPushButton">
          <property name="text">
           <string>Create 6th Edition 1920s Investigator</string>
          </property>
@@ -83,8 +83,8 @@
        <rect>
         <x>10</x>
         <y>9</y>
-        <width>701</width>
-        <height>481</height>
+        <width>741</width>
+        <height>601</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -751,7 +751,7 @@
             </layout>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="hLayoutMythosDB_2">
+            <layout class="QHBoxLayout" name="hLayoutHPSanMP">
              <item>
               <widget class="QLabel" name="cocHitPointsLabel">
                <property name="sizePolicy">
@@ -1070,6 +1070,448 @@
      <attribute name="title">
       <string>Skills</string>
      </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget_7">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>9</y>
+        <width>741</width>
+        <height>601</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_11">
+       <item>
+        <layout class="QHBoxLayout" name="hLayoutRemainingPoints">
+         <item>
+          <widget class="QLabel" name="label_8">
+           <property name="text">
+            <string>Occupational Points:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="cocRemainingOcpnPtsLabel">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>000</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_13">
+           <property name="text">
+            <string>remaining out of</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="cocTotalOcpnPtsLabel">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>000</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_12">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_12">
+           <property name="text">
+            <string>Personal Interest Points:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="cocRemainingPrsnPtsLabel">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>000</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_10">
+           <property name="text">
+            <string>remaining out of</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="cocTotalPrsnPtsLabel">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>000</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hLayoutSkillNameArea">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetFixedSize</enum>
+         </property>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <item>
+              <widget class="QLineEdit" name="cocCurrentSkillLineEdit">
+               <property name="font">
+                <font>
+                 <pointsize>16</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="cocCurrentSkillTotal">
+               <property name="font">
+                <font>
+                 <pointsize>16</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>00</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_9">
+               <property name="font">
+                <font>
+                 <pointsize>16</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>%</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QLabel" name="label_4">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Base Skill Level: </string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="cocCurrentSkillBaseLabel">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>10</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>00</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::MinimumExpanding</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="cocCurrentSkillOcpnCheckBox">
+               <property name="layoutDirection">
+                <enum>Qt::RightToLeft</enum>
+               </property>
+               <property name="text">
+                <string>Occupational Skill:</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_3">
+             <item>
+              <widget class="QSpinBox" name="cocCurrentSkillOcpnPtsSpinner"/>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="cocCurrentSkillPrsnPtsSpinner"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <item>
+              <widget class="QLabel" name="label_6">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Occupational Points</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_7">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string>Personal Interest Points</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_5">
+             <item>
+              <widget class="QSlider" name="cocCurrentSkillOcpnPtsSlider">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QSlider" name="cocCurrentSkillPrsnPtsSlider">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hLayoutSkills">
+         <item>
+          <layout class="QVBoxLayout" name="vLayoutSkillsCol1"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="vLayoutSkillsCol2"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="vLayoutSkillsCol3"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="vLayoutSkillsCol4"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="vLayoutSkillsCol5"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_16">
+         <property name="text">
+          <string>Melee:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hLayoutMelee">
+         <item>
+          <layout class="QVBoxLayout" name="vLayoutMeleeSkillsCol1"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="vLayoutMeleeSkillsCol2"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="vLayoutMeleeSkillsCol3"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="vLayoutMeleeSkillsCol4"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="vLayoutMeleeSkillsCol5"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_15">
+         <property name="text">
+          <string>Firearms:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hLayoutFirearms">
+         <item>
+          <layout class="QVBoxLayout" name="vLayoutFirearmSkillsCol1"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="vLayoutFirearmSkillsCol2"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="vLayoutFirearmSkillsCol3"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="vLayoutFirearmSkillsCol4"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="vLayoutFirearmSkillsCol5"/>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="hLayoutFooter">
+         <item>
+          <spacer name="horizontalSpacer_13">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_14">
+           <property name="text">
+            <string>Skills in</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_11">
+           <property name="font">
+            <font>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>BOLD</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_5">
+           <property name="font">
+            <font>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>are ones that have points over the base value.  Skills with an Asterisk (*) are Occupational Skills.</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_14">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -1078,7 +1520,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>739</width>
+     <width>782</width>
      <height>18</height>
     </rect>
    </property>
