@@ -26,3 +26,23 @@ HEADERS  += mainwindow.h \
     objects/coc6e1920investigator.h
 
 FORMS    += mainwindow.ui
+
+mac {
+    # Only Intel binaries are accepted so force this
+    #CONFIG += x86
+
+    # Minimum OS X version for submission is 10.6.6
+    QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.7
+
+    # Copy the custom Info.plist to the app bundle
+    plist.path = "$$DESTDIR/$$join(TARGET,,,.app)/Contents"
+    plist.files = Info.plist
+    INSTALLS += plist
+
+    # Icon is mandatory for submission
+    #ICON = appicon.icns
+}
+
+OTHER_FILES += \
+    resources/6e1920skills.dat
+
