@@ -499,7 +499,6 @@ void CoCInvestigator::removeOccupationalSkill(std::string sSkill)
 {
     for ( unsigned int i=0; i < this->occupationSkills.size(); i++ )
         if( (this->occupationSkills.at(i) == sSkill) ) {
-//            this->occupationSkills.erase(i);
             this->occupationSkills.erase(this->occupationSkills.begin()+i);
         }
 }

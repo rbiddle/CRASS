@@ -130,11 +130,11 @@ void CoC6e1920Investigator::setDefaultSkills()
     this->skills.push_back( this->makeSkill("f_rifle","Rifle",25) );
     this->skills.push_back( this->makeSkill("f_shotgun","Shotgun",30) );
     this->skills.push_back( this->makeSkill("f_smg","SMG",15) );
-    this->skills.push_back( this->makeSkill("f_zzcustom1","Custom Firearm #1",0) );
-    this->skills.push_back( this->makeSkill("f_zzcustom2","Custom Firearm #2",0) );
-    this->skills.push_back( this->makeSkill("f_zzcustom3","Custom Firearm #3",0) );
-    this->skills.push_back( this->makeSkill("f_zzcustom4","Custom Firearm #4",0) );
-    this->skills.push_back( this->makeSkill("f_zzcustom5","Custom Firearm #5",0) );
+    this->skills.push_back( this->makeSkill("f_zzcustom1","Custom Ranged #1",0) );
+    this->skills.push_back( this->makeSkill("f_zzcustom2","Custom Ranged #2",0) );
+    this->skills.push_back( this->makeSkill("f_zzcustom3","Custom Ranged #3",0) );
+    this->skills.push_back( this->makeSkill("f_zzcustom4","Custom Ranged #4",0) );
+    this->skills.push_back( this->makeSkill("f_zzcustom5","Custom Ranged #5",0) );
     this->skills.push_back( this->makeSkill("m_fist","Fist",50) );
     this->skills.push_back( this->makeSkill("m_kick","Kick",25) );
     this->skills.push_back( this->makeSkill("m_grapple","Grapple",25) );

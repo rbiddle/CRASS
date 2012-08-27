@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>782</width>
+    <width>930</width>
     <height>682</height>
    </rect>
   </property>
@@ -19,12 +19,12 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>761</width>
+      <width>911</width>
       <height>641</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="debugDataTab">
      <attribute name="title">
@@ -59,7 +59,7 @@
        <rect>
         <x>9</x>
         <y>10</y>
-        <width>741</width>
+        <width>891</width>
         <height>161</height>
        </rect>
       </property>
@@ -83,7 +83,7 @@
        <rect>
         <x>10</x>
         <y>9</y>
-        <width>741</width>
+        <width>891</width>
         <height>601</height>
        </rect>
       </property>
@@ -232,7 +232,7 @@
          <item>
           <layout class="QVBoxLayout" name="vLayoutStats">
            <property name="spacing">
-            <number>4</number>
+            <number>3</number>
            </property>
            <item>
             <layout class="QHBoxLayout" name="hLayoutSTRDEXINT">
@@ -1075,7 +1075,7 @@
        <rect>
         <x>10</x>
         <y>9</y>
-        <width>741</width>
+        <width>891</width>
         <height>601</height>
        </rect>
       </property>
@@ -1304,10 +1304,18 @@
            <item>
             <layout class="QVBoxLayout" name="verticalLayout_3">
              <item>
-              <widget class="QSpinBox" name="cocCurrentSkillOcpnPtsSpinner"/>
+              <widget class="QSpinBox" name="cocCurrentSkillOcpnPtsSpinner">
+               <property name="accelerated">
+                <bool>true</bool>
+               </property>
+              </widget>
              </item>
              <item>
-              <widget class="QSpinBox" name="cocCurrentSkillPrsnPtsSpinner"/>
+              <widget class="QSpinBox" name="cocCurrentSkillPrsnPtsSpinner">
+               <property name="accelerated">
+                <bool>true</bool>
+               </property>
+              </widget>
              </item>
             </layout>
            </item>
@@ -1411,7 +1419,7 @@
        <item>
         <widget class="QLabel" name="label_15">
          <property name="text">
-          <string>Firearms:</string>
+          <string>Ranged:</string>
          </property>
         </widget>
        </item>
@@ -1520,7 +1528,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>782</width>
+     <width>930</width>
      <height>18</height>
     </rect>
    </property>

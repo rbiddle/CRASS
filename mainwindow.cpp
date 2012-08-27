@@ -110,8 +110,16 @@ void MainWindow::refreshCoCSkillsTab() {
             ui->cocCurrentSkillOcpnCheckBox->setChecked(false);
         ui->cocCurrentSkillTotal->setText( intToString(cocInvestigatorPtr->getSkillPts(currentSkillName)).c_str() );
         ui->cocCurrentSkillBaseLabel->setText( intToString(cocInvestigatorPtr->getSkillBasePts(currentSkillName)).c_str() );
+    }
 
-        // TODO: disable up spinner/slider is maxed skill or out of points?
+    QString buttonText = "";
+    for(int i=0; i<200; i++) {
+        if(cocSkillButtons[i]) {
+            buttonText = cocSkillButtons[i]->text().toStdString().substr(0,cocSkillButtons[i]->text().toStdString().find_last_of("(")-1).c_str();
+            if (cocInvestigatorPtr->isOccupationalSkill(buttonText.toStdString()))
+                buttonText = "* " + buttonText;
+            cocSkillButtons[i]->setText(buttonText.toStdString().c_str());
+        }
     }
 }
 
@@ -121,6 +129,7 @@ void MainWindow::setupCoCSkillButtons(QStringList skills)
     QStringList cocMeleeSkillList;
     QStringList cocFirearmSkillList;
     int buttonsPerColumn = 0;
+    int buttonArrayOffset = 0;
 
     skills.sort();
     for (int i = 0; i < skills.size(); ++i) {
@@ -137,54 +146,60 @@ void MainWindow::setupCoCSkillButtons(QStringList skills)
     for (int i = 0; i < cocBasicSkillList.size(); ++i) {
         QStringList cocSkillInfo = cocBasicSkillList.at(i).split("~");
         QString buttonText = cocSkillInfo.at(1) + " (" + cocSkillInfo.at(2) + ")";
+        if(cocInvestigatorPtr->isOccupationalSkill(cocSkillInfo.at(1).toStdString()))
+            buttonText = "* " + buttonText;
         cocSkillButtons[i] = new QPushButton(buttonText);
         cocSkillButtons[i]->setProperty("cocSkillName",cocSkillInfo.at(0));
         connect(cocSkillButtons[i], SIGNAL(clicked()), this, SLOT(cocSkillButtonClicked()));
-        if (i < buttonsPerColumn)
+        if ( (i-buttonArrayOffset) < buttonsPerColumn)
             ui->vLayoutSkillsCol1->addWidget(cocSkillButtons[i]);
-        else if ( (i >= buttonsPerColumn) && (i < (buttonsPerColumn * 2)) )
+        else if ( ((i-buttonArrayOffset) >= buttonsPerColumn) && ((i-buttonArrayOffset) < (buttonsPerColumn * 2)) )
             ui->vLayoutSkillsCol2->addWidget(cocSkillButtons[i]);
-        else if ( (i >= (buttonsPerColumn * 2)) && (i < (buttonsPerColumn * 3)) )
+        else if ( ((i-buttonArrayOffset) >= (buttonsPerColumn * 2)) && ((i-buttonArrayOffset) < (buttonsPerColumn * 3)) )
             ui->vLayoutSkillsCol3->addWidget(cocSkillButtons[i]);
-        else if ( (i >= (buttonsPerColumn * 3)) && (i < (buttonsPerColumn * 4)) )
+        else if ( ((i-buttonArrayOffset) >= (buttonsPerColumn * 3)) && ((i-buttonArrayOffset) < (buttonsPerColumn * 4)) )
             ui->vLayoutSkillsCol4->addWidget(cocSkillButtons[i]);
         else
             ui->vLayoutSkillsCol5->addWidget(cocSkillButtons[i]);
     }
-
+    buttonArrayOffset = cocBasicSkillList.size();
     buttonsPerColumn = cocMeleeSkillList.size() / 5;
-    for (int i = 0; i < cocMeleeSkillList.size(); ++i) {
-        QStringList cocSkillInfo = cocMeleeSkillList.at(i).split("~");
+    for (int i = 0 + buttonArrayOffset; i < cocMeleeSkillList.size() + buttonArrayOffset; ++i) {
+        QStringList cocSkillInfo = cocMeleeSkillList.at(i - buttonArrayOffset).split("~");
         QString buttonText = cocSkillInfo.at(1) + " (" + cocSkillInfo.at(2) + ")";
+        if(cocInvestigatorPtr->isOccupationalSkill(cocSkillInfo.at(1).toStdString()))
+            buttonText = "* " + buttonText;
         cocSkillButtons[i] = new QPushButton(buttonText);
         cocSkillButtons[i]->setProperty("cocSkillName",cocSkillInfo.at(0));
         connect(cocSkillButtons[i], SIGNAL(clicked()), this, SLOT(cocSkillButtonClicked()));
-        if (i < buttonsPerColumn)
+        if ((i-buttonArrayOffset) < buttonsPerColumn)
             ui->vLayoutMeleeSkillsCol1->addWidget(cocSkillButtons[i]);
-        else if ( (i >= buttonsPerColumn) && (i < (buttonsPerColumn * 2)) )
+        else if ( ((i-buttonArrayOffset) >= buttonsPerColumn) && ((i-buttonArrayOffset) < (buttonsPerColumn * 2)) )
             ui->vLayoutMeleeSkillsCol2->addWidget(cocSkillButtons[i]);
-        else if ( (i >= (buttonsPerColumn * 2)) && (i < (buttonsPerColumn * 3)) )
+        else if ( ((i-buttonArrayOffset) >= (buttonsPerColumn * 2)) && ((i-buttonArrayOffset) < (buttonsPerColumn * 3)) )
             ui->vLayoutMeleeSkillsCol3->addWidget(cocSkillButtons[i]);
-        else if ( (i >= (buttonsPerColumn * 3)) && (i < (buttonsPerColumn * 4)) )
+        else if ( ((i-buttonArrayOffset) >= (buttonsPerColumn * 3)) && ((i-buttonArrayOffset) < (buttonsPerColumn * 4)) )
             ui->vLayoutMeleeSkillsCol4->addWidget(cocSkillButtons[i]);
         else
             ui->vLayoutMeleeSkillsCol5->addWidget(cocSkillButtons[i]);
     }
-
+    buttonArrayOffset += cocMeleeSkillList.size();
     buttonsPerColumn = cocFirearmSkillList.size() / 5;
-    for (int i = 0; i < cocFirearmSkillList.size(); ++i) {
-        QStringList cocSkillInfo = cocFirearmSkillList.at(i).split("~");
+    for (int i = 0 + buttonArrayOffset; i < cocFirearmSkillList.size() + buttonArrayOffset; ++i) {
+        QStringList cocSkillInfo = cocFirearmSkillList.at(i - buttonArrayOffset).split("~");
         QString buttonText = cocSkillInfo.at(1) + " (" + cocSkillInfo.at(2) + ")";
+        if(cocInvestigatorPtr->isOccupationalSkill(cocSkillInfo.at(1).toStdString()))
+            buttonText = "* " + buttonText;
         cocSkillButtons[i] = new QPushButton(buttonText);
         cocSkillButtons[i]->setProperty("cocSkillName",cocSkillInfo.at(0));
         connect(cocSkillButtons[i], SIGNAL(clicked()), this, SLOT(cocSkillButtonClicked()));
-        if (i < buttonsPerColumn)
+        if ((i-buttonArrayOffset) < buttonsPerColumn)
             ui->vLayoutFirearmSkillsCol1->addWidget(cocSkillButtons[i]);
-        else if ( (i >= buttonsPerColumn) && (i < (buttonsPerColumn * 2)) )
+        else if ( ((i-buttonArrayOffset) >= buttonsPerColumn) && ((i-buttonArrayOffset) < (buttonsPerColumn * 2)) )
             ui->vLayoutFirearmSkillsCol2->addWidget(cocSkillButtons[i]);
-        else if ( (i >= (buttonsPerColumn * 2)) && (i < (buttonsPerColumn * 3)) )
+        else if ( ((i-buttonArrayOffset) >= (buttonsPerColumn * 2)) && ((i-buttonArrayOffset) < (buttonsPerColumn * 3)) )
             ui->vLayoutFirearmSkillsCol3->addWidget(cocSkillButtons[i]);
-        else if ( (i >= (buttonsPerColumn * 3)) && (i < (buttonsPerColumn * 4)) )
+        else if ( ((i-buttonArrayOffset) >= (buttonsPerColumn * 3)) && ((i-buttonArrayOffset) < (buttonsPerColumn * 4)) )
             ui->vLayoutFirearmSkillsCol4->addWidget(cocSkillButtons[i]);
         else
             ui->vLayoutFirearmSkillsCol5->addWidget(cocSkillButtons[i]);
@@ -195,8 +210,12 @@ void MainWindow::cocSkillButtonClicked()
 {
     currentCoCSkillButton = (QPushButton *)sender();
     std::string cocSkillName = currentCoCSkillButton->text().toStdString();
+    std::string currentSkillName = cocSkillName.substr(0,cocSkillName.find_last_of("(")-1).c_str();
 
-    ui->cocCurrentSkillLineEdit->setText( cocSkillName.substr(0,cocSkillName.find_last_of("(")-1).c_str() );
+    if (currentSkillName.at(0) == '*')
+        ui->cocCurrentSkillLineEdit->setText( currentSkillName.substr(2,currentSkillName.length()).c_str() );
+    else
+        ui->cocCurrentSkillLineEdit->setText( currentSkillName.c_str() );
 
     this->refreshCoCSkillsTab();
 }
@@ -240,7 +259,6 @@ void MainWindow::on_action6th_Edition_1920s_Investigator_triggered()
     ui->cocOccupationComboBox->addItem("Occuaption_3");
     cocInvestigatorPtr->addOccupationalSkill("Dodge");
 
-    // TODO: setup Skills tab buttons (Occupation and customized)
     QStringList cocSkills;
     cocSkillList = cocInvestigatorPtr->getSkillList();
     for ( unsigned int i=0; i < cocSkillList.size(); i++ ) {
@@ -417,51 +435,119 @@ void MainWindow::on_cocCharDescTextEdit_textChanged()
 void MainWindow::on_cocCurrentSkillOcpnPtsSpinner_valueChanged(int arg1)
 {
     std::string currentSkillName = ui->cocCurrentSkillLineEdit->text().toStdString();
-    ui->cocCurrentSkillOcpnPtsSlider->setValue(arg1);
-    cocInvestigatorPtr->incrSkillOcpn(currentSkillName, arg1);
-    this->refreshCoCSkillsTab();
-    ui->cocCurrentSkillTotal->setText( intToString(cocInvestigatorPtr->getSkillPts(currentSkillName)).c_str() );
+    if ( ui->cocRemainingOcpnPtsLabel->text().toInt() == 0 && arg1 >= cocInvestigatorPtr->getSkillOcpnPts(currentSkillName) ) {
+        ui->cocCurrentSkillOcpnPtsSpinner->setValue(cocInvestigatorPtr->getSkillOcpnPts(currentSkillName));
+    } else {
+        int totalSkillAmt = arg1 + cocInvestigatorPtr->getSkillBasePts(currentSkillName) + cocInvestigatorPtr->getSkillPrsnPts(currentSkillName);
 
-    // TODO: Update Skill Button
-    // TODO: Update Spinner/Slider Maxes
+        if ( totalSkillAmt >= 99) {
+            arg1 = 99 - ( cocInvestigatorPtr->getSkillBasePts(currentSkillName) + cocInvestigatorPtr->getSkillPrsnPts(currentSkillName) );
+            ui->cocCurrentSkillOcpnPtsSpinner->setValue(arg1);
+        }
+        cocInvestigatorPtr->incrSkillOcpn(currentSkillName, arg1);
+        this->refreshCoCSkillsTab();
+
+        if( ui->cocCurrentSkillTotal->text().toInt() == cocInvestigatorPtr->getSkillBasePts(currentSkillName) ) {
+            QFont oFont = currentCoCSkillButton->font();
+            oFont.setBold(false);
+            currentCoCSkillButton->setFont(oFont);
+        } else {
+            QFont oFont = currentCoCSkillButton->font();
+            oFont.setBold(true);
+            currentCoCSkillButton->setFont(oFont);
+        }
+    }
 }
 
 void MainWindow::on_cocCurrentSkillPrsnPtsSpinner_valueChanged(int arg1)
 {
     std::string currentSkillName = ui->cocCurrentSkillLineEdit->text().toStdString();
-    ui->cocCurrentSkillPrsnPtsSlider->setValue(arg1);
-    cocInvestigatorPtr->incrSkillPrsn(currentSkillName, arg1);
-    this->refreshCoCSkillsTab();
-    ui->cocCurrentSkillTotal->setText( intToString(cocInvestigatorPtr->getSkillPts(currentSkillName)).c_str() );
+    if ( ui->cocRemainingPrsnPtsLabel->text().toInt() == 0 && arg1 >= cocInvestigatorPtr->getSkillPrsnPts(currentSkillName) ) {
+        ui->cocCurrentSkillPrsnPtsSpinner->setValue(cocInvestigatorPtr->getSkillPrsnPts(currentSkillName));
+    } else {
+        int totalSkillAmt = arg1 + cocInvestigatorPtr->getSkillBasePts(currentSkillName) + cocInvestigatorPtr->getSkillOcpnPts(currentSkillName);
 
-    // TODO: Update Skill Button
+        if ( totalSkillAmt >= 99) {
+            arg1 = 99 - ( cocInvestigatorPtr->getSkillBasePts(currentSkillName) + cocInvestigatorPtr->getSkillOcpnPts(currentSkillName) );
+            ui->cocCurrentSkillPrsnPtsSpinner->setValue(arg1);
+        }
+        cocInvestigatorPtr->incrSkillPrsn(currentSkillName, arg1);
+        this->refreshCoCSkillsTab();
+
+        if( ui->cocCurrentSkillTotal->text().toInt() == cocInvestigatorPtr->getSkillBasePts(currentSkillName) ) {
+            QFont oFont = currentCoCSkillButton->font();
+            oFont.setBold(false);
+            currentCoCSkillButton->setFont(oFont);
+        } else {
+            QFont oFont = currentCoCSkillButton->font();
+            oFont.setBold(true);
+            currentCoCSkillButton->setFont(oFont);
+        }
+    }
 }
 
 void MainWindow::on_cocCurrentSkillOcpnPtsSlider_valueChanged(int value)
 {
     std::string currentSkillName = ui->cocCurrentSkillLineEdit->text().toStdString();
-    ui->cocCurrentSkillOcpnPtsSpinner->setValue(value);
-    cocInvestigatorPtr->incrSkillOcpn(currentSkillName, value);
-    this->refreshCoCSkillsTab();
-    ui->cocCurrentSkillTotal->setText( intToString(cocInvestigatorPtr->getSkillPts(currentSkillName)).c_str() );
+    if ( ui->cocRemainingOcpnPtsLabel->text().toInt() == 0 && value >= cocInvestigatorPtr->getSkillOcpnPts(currentSkillName) ) {
+        ui->cocCurrentSkillOcpnPtsSlider->setValue(cocInvestigatorPtr->getSkillOcpnPts(currentSkillName));
+    } else {
+        int totalSkillAmt = value + cocInvestigatorPtr->getSkillBasePts(currentSkillName) + cocInvestigatorPtr->getSkillPrsnPts(currentSkillName);
 
-    // TODO: Update Skill Button
+        if ( totalSkillAmt >= 99) {
+            value = 99 - ( cocInvestigatorPtr->getSkillBasePts(currentSkillName) + cocInvestigatorPtr->getSkillPrsnPts(currentSkillName) );
+            ui->cocCurrentSkillOcpnPtsSlider->setValue(value);
+        }
+        cocInvestigatorPtr->incrSkillOcpn(currentSkillName, value);
+        this->refreshCoCSkillsTab();
+
+        if( ui->cocCurrentSkillTotal->text().toInt() == cocInvestigatorPtr->getSkillBasePts(currentSkillName) ) {
+            QFont oFont = currentCoCSkillButton->font();
+            oFont.setBold(false);
+            currentCoCSkillButton->setFont(oFont);
+        } else {
+            QFont oFont = currentCoCSkillButton->font();
+            oFont.setBold(true);
+            currentCoCSkillButton->setFont(oFont);
+        }
+    }
 }
 
 void MainWindow::on_cocCurrentSkillPrsnPtsSlider_valueChanged(int value)
 {
     std::string currentSkillName = ui->cocCurrentSkillLineEdit->text().toStdString();
-    ui->cocCurrentSkillPrsnPtsSpinner->setValue(value);
-    cocInvestigatorPtr->incrSkillPrsn(currentSkillName, value);
-    this->refreshCoCSkillsTab();
-    ui->cocCurrentSkillTotal->setText( intToString(cocInvestigatorPtr->getSkillPts(currentSkillName)).c_str() );
+    if ( ui->cocRemainingPrsnPtsLabel->text().toInt() == 0 && value >= cocInvestigatorPtr->getSkillPrsnPts(currentSkillName) ) {
+        ui->cocCurrentSkillPrsnPtsSlider->setValue(cocInvestigatorPtr->getSkillPrsnPts(currentSkillName));
+    } else {
+        int totalSkillAmt = value + cocInvestigatorPtr->getSkillBasePts(currentSkillName) + cocInvestigatorPtr->getSkillOcpnPts(currentSkillName);
 
-    // TODO: Update Skill Button
+        if ( totalSkillAmt >= 99) {
+            value = 99 - ( cocInvestigatorPtr->getSkillBasePts(currentSkillName) + cocInvestigatorPtr->getSkillOcpnPts(currentSkillName) );
+            ui->cocCurrentSkillPrsnPtsSlider->setValue(value);
+        }
+        cocInvestigatorPtr->incrSkillPrsn(currentSkillName, value);
+        this->refreshCoCSkillsTab();
+
+        if( ui->cocCurrentSkillTotal->text().toInt() == cocInvestigatorPtr->getSkillBasePts(currentSkillName) ) {
+            QFont oFont = currentCoCSkillButton->font();
+            oFont.setBold(false);
+            currentCoCSkillButton->setFont(oFont);
+        } else {
+            QFont oFont = currentCoCSkillButton->font();
+            oFont.setBold(true);
+            currentCoCSkillButton->setFont(oFont);
+        }
+    }
 }
 
 void MainWindow::on_cocCurrentSkillOcpnCheckBox_clicked()
 {
-    // TODO: make Current Skill an Occupational Skill
+    if( ui->cocCurrentSkillOcpnCheckBox->isChecked() )
+        cocInvestigatorPtr->addOccupationalSkill( ui->cocCurrentSkillLineEdit->text().toStdString() );
+    else
+        cocInvestigatorPtr->removeOccupationalSkill( ui->cocCurrentSkillLineEdit->text().toStdString() );
+
+    this->refreshCoCSkillsTab();
 }
 
 void MainWindow::on_tabWidget_selected(const QString &arg1)
