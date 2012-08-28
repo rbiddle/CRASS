@@ -217,6 +217,14 @@ void MainWindow::cocSkillButtonClicked()
     else
         ui->cocCurrentSkillLineEdit->setText( currentSkillName.c_str() );
 
+    // TODO: enable spinners/sliders/checkbox
+    ui->cocCurrentSkillLineEdit->setEnabled(true);
+    ui->cocCurrentSkillOcpnCheckBox->setEnabled(true);
+    ui->cocCurrentSkillOcpnPtsSlider-setEnabled(true);
+    ui->cocCurrentSkillOcpnPtsSpinner-setEnabled(true);
+    ui->cocCurrentSkillPrsnPtsSlider-setEnabled(true);
+    ui->cocCurrentSkillPrsnPtsSpinner-setEnabled(true);
+
     this->refreshCoCSkillsTab();
 }
 
